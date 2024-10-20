@@ -1,27 +1,14 @@
+/* Styles for the header */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Đảm bảo menu luôn ở trên cùng */
+  transition: transform 0.3s ease;
+  /* Hiệu ứng trượt */
 }
 
-@keyframes slide-down {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Class to hide the header when scrolling down */
+.header-hidden {
+  transform: translateY(-70%);
 }
-
-.animate-slide-down {
-    animation: slide-down 0.5s ease forwards;
-}
-
