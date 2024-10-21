@@ -62,6 +62,31 @@ const HeaderApp = () => {
       setLastScrollY(scrollY);
     }
   };
+  const [project, setProject] = useState<any[]>([]);
+
+  const fetchProject = async () => {
+    try {
+      const response = await fetch("/api/project");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+
+      // Extract the 'data' field from the response
+      if (data.success) {
+        console.log(data.data); // Log the projects data
+        setProject(data.data); // Set the project state with the data array
+      } else {
+        console.error("Failed to fetch project data:", data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProject();
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -71,7 +96,7 @@ const HeaderApp = () => {
   }, [lastScrollY]);
   return (
     <>
-      <header className={`bg-white header ${!isVisible ? 'header-hidden' : ''}`}>
+      <header className={` header ${!isVisible ? 'header-hidden' : ''}`}>
         <nav
           aria-label="Global"
           className="mx-auto max-w-7xl flex flex-col items-center justify-center p-2 lg:px-8"
@@ -123,22 +148,20 @@ const HeaderApp = () => {
                   </div>
 
                   {projectPanelOpen && (
-                    <div className="absolute -left-8 top-full z-10 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition">
+                    <div className="absolute -left-8 top-full z-10 w-max max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition">
                       <div className="">
-                        {products.map((item) => (
+                        {project.map((item) => (
                           <div
-                            key={item.name}
+                            key={item.category_name}
                             className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                           >
-                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                              <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
-                            </div>
+
                             <div className="flex-auto">
-                              <a href={item.href} className="block font-semibold text-gray-900">
-                                {item.name}
+                              <a href="#" className="block font-semibold text-gray-900">
+                                {item.category_name}
                                 <span className="absolute inset-0" />
                               </a>
-                              <p className="mt-1 text-gray-600">{item.description}</p>
+                              
                             </div>
                           </div>
                         ))}
@@ -173,7 +196,7 @@ const HeaderApp = () => {
                   </div>
 
                   {servicePanelOpen && (
-                    <div className="absolute -left-8 top-full z-10 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition">
+                    <div className="absolute -left-8 top-full z-10 w-max max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition">
                       <div className="">
                         {products.map((item) => (
                           <div

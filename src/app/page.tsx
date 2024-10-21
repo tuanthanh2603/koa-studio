@@ -1,11 +1,31 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [project, setProject] = useState<any[]>([]); // Update state to hold an array
+  const fetchProject = async () => {
+    try {
+      const response = await fetch("/api/project");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      setProject(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    
+
+    fetchProject();
+  }, []);
+
   return (
     <>
-      <img src="https://th.bing.com/th/id/OIP.xha6mObGeFbHzkq6Iu1ylgAAAA?rs=1&pid=ImgDetMain" alt="" />
-      <img src="https://th.bing.com/th/id/OIP.xha6mObGeFbHzkq6Iu1ylgAAAA?rs=1&pid=ImgDetMain" alt="" />
-      <img src="https://th.bing.com/th/id/OIP.xha6mObGeFbHzkq6Iu1ylgAAAA?rs=1&pid=ImgDetMain" alt="" />
+      <div>home</div>
+      <pre>{JSON.stringify(project, null, 2)}</pre>
     </>
   );
 }

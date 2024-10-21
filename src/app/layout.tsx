@@ -26,11 +26,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <HeaderApp/>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <div
+        style={{
+            backgroundImage: `url('/static/bg.jpg')`,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            imageRendering: 'crisp-edges',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1,
+        }}
+    />
+          <HeaderApp />
+          {children}
+     
       </body>
     </html>
   );
