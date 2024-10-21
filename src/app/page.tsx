@@ -24,7 +24,9 @@ export default function Home() {
 
   return (
     <>
-      <div>home</div>
+      <section>
+        <img src="/static/bg_1.jpg" alt="" />
+      </section>
       <pre>{JSON.stringify(project, null, 2)}</pre>
     </>
   );

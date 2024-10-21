@@ -11,4 +11,5 @@
 /* Class to hide the header when scrolling down */
 .header-hidden {
   transform: translateY(-70%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
