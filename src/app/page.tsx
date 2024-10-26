@@ -81,6 +81,32 @@ const PackageCard: React.FC<PackageCardProps> = ({ title, description, features 
     </div>
   );
 };
+const products = [
+  {
+    id: 1,
+    name: 'Earthen Bottle',
+    href: '#',
+    price: '$48',
+    imageSrc: 'https://koastudio.vn/wp-content/uploads/NGOAITHAT_2.jpg',
+    imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+  },
+  {
+    id: 2,
+    name: 'Nomad Tumbler',
+    href: '#',
+    price: '$35',
+    imageSrc: 'https://koastudio.vn/wp-content/uploads/MATTIEN_1.jpg',
+    imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+  },
+  {
+    id: 3,
+    name: 'Focus Paper Refill',
+    href: '#',
+    price: '$89',
+    imageSrc: 'https://koastudio.vn/wp-content/uploads/4-16-scaled.jpg',
+    imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+  },
+]
 
 
 export default function Home() {
@@ -109,7 +135,7 @@ export default function Home() {
   });
 
   const section2Ref = useRef<HTMLDivElement | null>(null);
-  const section3Ref = useRef(null);
+  const section3Ref = useRef<HTMLDivElement | null>(null);
   const section4Ref = useRef(null);
 
   useEffect(() => {
@@ -145,9 +171,9 @@ export default function Home() {
   }, []);
 
 
-  const handleScrollToSection2 = () => {
-    if (section2Ref.current) {
-      section2Ref.current.scrollIntoView({ behavior: 'smooth' });
+  const handleScrollToSection = () => {
+    if (section3Ref.current) {
+      section3Ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
   const images = [
@@ -172,9 +198,9 @@ export default function Home() {
   return (
     <>
       <section
-      className={`h-screen flex flex-col justify-center items-center bg-cover bg-center transition-opacity duration-1000 ${fade ? 'opacity-100' : 'opacity-0'}`}
-      style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-    >
+        className={`h-screen flex flex-col justify-center items-center bg-cover bg-center transition-opacity duration-1000 ${fade ? 'opacity-100' : 'opacity-0'}`}
+        style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
+      >
         <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
         <div className="relative z-10 flex flex-col space-y-44">
           <div className="flex-grow text-center">
@@ -189,13 +215,57 @@ export default function Home() {
 
               <button
                 className="flex justify-center items-center w-10 h-10 rounded-full bg-transparent border border-[#b3b3b3] text-[#e6e6e6] hover:bg-white hover:text-gray-800 focus:outline-none transition-transform transform bouncing-button"
-                onClick={handleScrollToSection2}
+                onClick={handleScrollToSection}
               >
                 <span>
                   <IoChevronDown />
                 </span>
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        ref={section3Ref}
+        data-section-id="section3"
+        className={`min-h-screen flex flex-col justify-center items-center bg-[#fff] transition-opacity duration-1000 ${visibleSections.section3 ? 'animate-slideUp opacity-100' : 'opacity-0'}`}
+      >
+        <div className="bg-white">
+          <div className="mx-auto max-w-4xl text-center pt-20">
+            <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+              DỰ ÁN NỔI BẬT
+            </p>
+          </div>
+          <div className="mx-auto max-w-2xl px-4 py-14 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+              {products.map((product) => (
+                <a key={product.id} href={product.href} className="group relative">
+                  <div className="w-full aspect-square overflow-hidden bg-gray-200 relative">
+                    <img
+                      alt={product.imageAlt}
+                      src={product.imageSrc}
+                      className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-75"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-5">
+                      <p className="text-lg font-semibold text-white">Đây là một dự án nổi bật</p>
+                      <a href={product.href} className="mt-2 inline-block rounded-md bg-yellow-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-yellow-400 transition duration-200">
+                        Xem chi tiết
+                      </a>
+                    </div>
+                  </div>
+                  <p className="mt-1 text-lg font-semibold text-gray-900 text-center">{product.price}</p>
+                </a>
+              ))}
+
+
+            </div>
+          </div>
+          <div className="flex justify-center pb-10">
+            <a href="/project" className=" rounded-md px-24 py-2.5 text-center text-sm font-semibold text-[#000] ring-1 ring-inset ring-[#a0a0a0] hover:ring-[#c4c4c4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">
+              XEM TẤT CẢ
+            </a>
           </div>
         </div>
       </section>
@@ -209,7 +279,7 @@ export default function Home() {
         className={`h-screen flex flex-col justify-center items-center bg-[#fff] transition-opacity duration-1000 ${visibleSections.section2 ? 'animate-slideUp opacity-100' : 'opacity-0'}`}
       >
         <div className="mx-auto max-w-4xl text-center pb-20">
-          <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+          <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
             BÁO GIÁ
           </p>
         </div>
@@ -226,14 +296,16 @@ export default function Home() {
 
 
 
+
+
       <section
-        ref={section3Ref}
-        data-section-id="section3"
-        className={`h-screen flex flex-col justify-center items-center bg-[#fff] transition-opacity duration-1000 text-white ${visibleSections.section3 ? 'animate-slideUp opacity-100' : 'opacity-0'}`}
+        ref={section4Ref}
+        data-section-id="section4"
+        className={`h-screen flex flex-col justify-center items-center bg-[#fff] transition-opacity duration-1000 text-white ${visibleSections.section4 ? 'animate-slideUp opacity-100' : 'opacity-0'}`}
       >
 
         <div className="mx-auto max-w-4xl text-center pb-8">
-          <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+          <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
             THI CÔNG TRỌN GÓI
           </p>
         </div>
@@ -255,9 +327,9 @@ export default function Home() {
 
 
           <div className="flex flex-col items-center p-4">
-          <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
+            <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
               <div className="mb-4">
-                <TbReportMoney  className="mx-auto text-4xl text-black" />
+                <TbReportMoney className="mx-auto text-4xl text-black" />
               </div>
               <h3 className="text-[16px] text-center text-[#000] font-bold">BÁO GIÁ</h3>
               <p className="text-[14px] text-center text-[#1a1a1a]">Trao đổi và tư vấn khách hàng về nhu cầu, mong muốn, và định hướng mức đầu tư.</p>
@@ -267,9 +339,9 @@ export default function Home() {
 
 
           <div className="flex flex-col items-center p-4">
-          <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
+            <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
               <div className="mb-4">
-                <RiContractLine  className="mx-auto text-4xl text-black" />
+                <RiContractLine className="mx-auto text-4xl text-black" />
               </div>
               <h3 className="text-[16px] text-center text-[#000] font-bold">KÝ HỢP ĐỒNG</h3>
               <p className="text-[14px] text-center text-[#1a1a1a]">Trao đổi và tư vấn khách hàng về nhu cầu, mong muốn, và định hướng mức đầu tư.</p>
@@ -279,9 +351,9 @@ export default function Home() {
 
 
           <div className="flex flex-col items-center p-4">
-          <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
+            <div className="p-6 rounded-lg shadow-md  flex flex-col items-center">
               <div className="mb-4">
-                <SiTimescale  className="mx-auto text-4xl text-black" />
+                <SiTimescale className="mx-auto text-4xl text-black" />
               </div>
               <h3 className="text-[16px] text-center text-[#000] font-bold">BÀN GIAO & QUYẾT TOÁN</h3>
               <p className="text-[14px] text-center text-[#1a1a1a]">Trao đổi và tư vấn khách hàng về nhu cầu, mong muốn, và định hướng mức đầu tư.</p>
@@ -293,13 +365,6 @@ export default function Home() {
 
 
 
-      <section
-        ref={section4Ref}
-        data-section-id="section4"
-        className={`h-screen flex justify-center items-center bg-gray-500 transition-opacity duration-1000 text-white ${visibleSections.section4 ? 'animate-slideUp opacity-100' : 'opacity-0'}`}
-      >
-        <h1 className="text-4xl">Screen 4 Content</h1>
-      </section>
     </>
   );
 }

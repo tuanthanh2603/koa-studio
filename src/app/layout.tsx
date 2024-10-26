@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeaderApp from "@/components/HeaderApp";
 import { usePathname } from 'next/navigation';
+import FooterApp from "@/components/FooterApp";
 const geistSans = localFont({
   src: "./fonts/Proxima-Nova-Thin.otf",
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         {!isHomePage && <HeaderApp />}
 
         {children}
+        <FooterApp/>
       </body>
     </html>
   );
