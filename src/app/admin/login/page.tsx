@@ -27,6 +27,7 @@ const Login: React.FC = () => {
         });
         const data = await response.json();
         if (response.ok) {
+            sessionStorage.setItem('userId', data.userId);
             router.push('/admin/dashboard');
         } else {
             setMessage(data.message);
@@ -35,7 +36,7 @@ const Login: React.FC = () => {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-96">
-                <h2 className="text-2xl font-bold mb-4">Đăng Nhập</h2>
+                <h2 className="text-2xl font-bold mb-4 text-black">Đăng Nhập</h2>
                 <div className="mb-4">
                     <label htmlFor="username" className="block text-sm font-medium text-gray-700">Tên đăng nhập:</label>
                     <input

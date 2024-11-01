@@ -277,7 +277,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center pb-10">
-            <a href="/project" className=" rounded-md px-24 py-2.5 text-center text-sm font-semibold text-[#000] ring-1 ring-inset ring-[#a0a0a0] hover:ring-[#c4c4c4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">
+            <a href="/du-an" className=" rounded-md px-24 py-2.5 text-center text-sm font-semibold text-[#000] ring-1 ring-inset ring-[#a0a0a0] hover:ring-[#c4c4c4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">
               XEM TẤT CẢ
             </a>
           </div>

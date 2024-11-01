@@ -23,11 +23,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const products = [
-  { name: 'SHOPHOUSE', description: 'ABC', href: '#', icon: ChartPieIcon },
-  { name: 'BILLIARD', description: 'ABCD', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'CAFE', description: 'ABC', href: '#', icon: FingerPrintIcon },
-]
+
 const quote = [
   { name: 'BÁO GIÁ XÂY NHÀ TRỌN GÓI', href: '#' },
   { name: 'BÁO GIÁ HOÀN THIỆN', href: '#' },
@@ -79,7 +75,7 @@ const HeaderApp = () => {
 
   const fetchProject = async () => {
     try {
-      const response = await fetch("/api/project");
+      const response = await fetch("/api/admin/get-category-project");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -190,7 +186,7 @@ const HeaderApp = () => {
                     onMouseEnter={() => setProjectPanelOpen(true)}
                     onMouseLeave={() => setProjectPanelOpen(false)}
                   >
-                    {project_v2.map((item) => (
+                    {project.map((item) => (
                       <div
                         key={item.category_name}
                         className="relative group p-4 hover:bg-gray-50 text-sm"
@@ -207,7 +203,7 @@ const HeaderApp = () => {
                         <span className="absolute left-0 bottom-0 h-[1px] w-full bg-[#bebebe] transform scale-x-0 transition-transform duration-200 ease-in-out group-hover:scale-x-100" />
 
                         {/* Submenu Flyout */}
-                        {subMenuOpen === item.category_name && (
+                        {/* {subMenuOpen === item.category_name && (
                           <div className="absolute left-full top-0 z-30 w-48 bg-white shadow-lg ring-1 ring-gray-900/5">
                             {item.subItems.map((subItem) => (
                               <a
@@ -219,7 +215,7 @@ const HeaderApp = () => {
                               </a>
                             ))}
                           </div>
-                        )}
+                        )} */}
                       </div>
                     ))}
 

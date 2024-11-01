@@ -21,10 +21,7 @@ export async function POST(request: Request) {
         if (user.password !== password) {
             return NextResponse.json({ message: 'Mật khẩu không đúng' }, { status: 401 });
         }
-        const token = user._id.toString();
-        const response = NextResponse.json({ message: 'Đăng nhập thành công', userId: user._id });
-        response.cookies.set('token', token, { path: '/', httpOnly: true });
-        return response;
+        return NextResponse.json({ message: 'Đăng nhập thành công', userId: user._id });
     } catch (error) {
         console.error('Lỗi khi đăng nhập:', error);
         return NextResponse.json({ message: 'Đã xảy ra lỗi' }, { status: 500 });
