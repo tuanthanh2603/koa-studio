@@ -2,7 +2,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function FooterApp() {
     return (
-        <div className="flex flex-col items-center text-center space-y-2 mb-5 mt-5">
+        <div className="flex flex-col items-center text-center space-y-2 mb-5 mt-5 text-gray-900">
             <p>
                 Copyright 2024 © <span className="font-semibold">KOA Studio</span> All rights reserved.
             </p>
