@@ -2,13 +2,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function FooterApp() {
     return (
-<<<<<<< HEAD
-        <div className="flex flex-col items-center text-center space-y-2 mb-5 mt-5">
-            <p className='text-gray-900'>
-=======
         <div className="flex flex-col items-center text-center space-y-2 mb-5 mt-5 text-gray-900">
             <p>
->>>>>>> 70544b577e16e240c40aedde679a3e229423fd29
                 Copyright 2024 © <span className="font-semibold">KOA Studio</span> All rights reserved.
             </p>
             <div className="flex space-x-4 text-xl">
