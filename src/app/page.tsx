@@ -248,9 +248,19 @@ export default function Home() {
                       className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-75"
                     />
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-5">
-                      <p className="text-lg font-semibold text-white">Đây là một dự án nổi bật</p>
-                      <a href={product.href} className="mt-2 inline-block rounded-md bg-yellow-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-yellow-400 transition duration-200">
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-5">
+                      <p className="text-lg font-semibold text-white overflow-hidden text-ellipsis" style={{
+                        display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 5
+                      }}>
+                        Đây là một dự án nổi bật Đây là một dự án nổi bật Đây là một dự án nổi bật Đây là một dự án nổi bật Đây là một dự án nổi bật Đây là một dự án nổi bậtĐây là một dự án nổi bật Đây là một dự án nổi bật Đây là một dự án nổi bật 
+                      </p>
+
+                      <a
+                        href={product.href}
+                        className="inline-block rounded-md bg-yellow-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-yellow-400 transition duration-200"
+                      >
                         Xem chi tiết
                       </a>
                     </div>
@@ -260,10 +270,14 @@ export default function Home() {
               ))}
 
 
+
+
+
+
             </div>
           </div>
           <div className="flex justify-center pb-10">
-            <a href="/project" className=" rounded-md px-24 py-2.5 text-center text-sm font-semibold text-[#000] ring-1 ring-inset ring-[#a0a0a0] hover:ring-[#c4c4c4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">
+            <a href="/du-an" className=" rounded-md px-24 py-2.5 text-center text-sm font-semibold text-[#000] ring-1 ring-inset ring-[#a0a0a0] hover:ring-[#c4c4c4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">
               XEM TẤT CẢ
             </a>
           </div>
