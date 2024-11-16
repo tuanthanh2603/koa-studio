@@ -1,3 +1,5 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
+
 const posts = [
     {
         id: 1,
@@ -48,8 +50,14 @@ const posts = [
 export default function Project() {
     return (
         <>
+
             <div className=" py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    <Breadcrumbs
+                        items={[
+                            { label: 'Trang chủ', href: '/' },
+                            { label: 'Dự án' },
+                        ]} />
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Project</h2>
                         <p className="mt-2 text-lg leading-8 text-gray-600">

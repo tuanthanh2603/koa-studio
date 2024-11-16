@@ -1,0 +1,7 @@
+.highlighted-list-item::before {
+    content: '★';
+    color: #f59e0b; 
+    font-weight: bold;
+    margin-right: 0.5rem;
+    line-height: 0.5rem;
+}
