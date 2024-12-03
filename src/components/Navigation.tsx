@@ -100,7 +100,7 @@ const navigation = {
             sections: [
                 {
                     id: 'clothing',
-                    name: 'Clothing',
+                    name: 'Báo giá xây nhà trọn gói',
                     items: [
                         { name: 'Tops', href: '#' },
                         { name: 'Pants', href: '#' },
@@ -113,7 +113,7 @@ const navigation = {
                 },
                 {
                     id: 'accessories',
-                    name: 'Accessories',
+                    name: 'Báo giá hoàn thiện',
                     items: [
                         { name: 'Watches', href: '#' },
                         { name: 'Wallets', href: '#' },
@@ -125,7 +125,17 @@ const navigation = {
                 },
                 {
                     id: 'brands',
-                    name: 'Brands',
+                    name: 'Báo giá xây dựng phần thô',
+                    items: [
+                        { name: 'Re-Arranged', href: '#' },
+                        { name: 'Counterfeit', href: '#' },
+                        { name: 'Full Nelson', href: '#' },
+                        { name: 'My Way', href: '#' },
+                    ],
+                },
+                {
+                    id: 'brands',
+                    name: 'Báo giá thiết kế',
                     items: [
                         { name: 'Re-Arranged', href: '#' },
                         { name: 'Counterfeit', href: '#' },
@@ -373,7 +383,7 @@ export default function Example() {
                                                             <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                                                 {category.sections.map((section) => (
                                                                     <div key={section.name}>
-                                                                        <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                                                        <p id={`${section.name}-heading`} className="font-semibold text-[16px] text-gray-900">
                                                                             {section.name}
                                                                         </p>
                                                                         <ul
